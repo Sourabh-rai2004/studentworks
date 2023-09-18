@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Column Layout with Background Image</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Reset some default styles */
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Define a container for the layout */
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden; /* Hide overflowing content */
+        }
+
+        /* Define styles for the left column */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 20px;
+            flex: 1; /* Take up 50% of the container's width */
+            padding: 20px; /* Background color for the left column */
+        }
+
+        /* Define styles for the right column */
+        .right-column {
+            flex: 1; /* Take up 50% of the container's width */
+            background-image: url('https://www.andacademy.com/wp-content/themes/andacademy/pm/images/Grid-grid.png'); /* Replace with your image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 20px 40px 40px 40px;
+            height: 80vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stack columns on small screens */
+            }
+            .left-column, .right-column {
+                flex: 1; /* Take up 100% of the container's width on small screens */
+            }
+        }
+        .right{
+            width: 85%;
+            border: 30px solid #cdaeff;
+        }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 80px;
+            margin-right: -90px;
+            justify-content: right;
+        }
+
+        .button {
+            font-family:sans-serif;
+            background: #ae7bff;
+            color: #fff;
+            font-size: 15px;
+            text-transform: uppercase;
+            padding: 10px 0;
+            text-align: center;
+            line-height: 28px;
+            border: #ae7bff;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <img style="margin-top: 10px;" src="https://andacademynew.quintero-solutions.com/temp-resources/wp-content/uploads/2023/09/Group-511-1.png" width="100%" height="auto"></div><br>
+ <div class="container">
+        
+        <div class="left-column">
+                
+               <h1 style="font-size: 45px;
+               font-family:sans-serif;
+               text-transform: uppercase;
+               color: #CDAEFF;
+               background: #fff0;
+               padding: 0 0 50px 0;
+               margin-bottom: 0;
+               line-height: 50px;">STUDENT WORK  </h1>
+                  <p style="font-size: 26px;
+                  font-family: sans-serif;
+                  color: #6E1DED;
+                  line-height: 35px;">Good decision - after all, the proof of the pudding <br>is in the eating! </p><br>
+
+                    <p style="font-size: 26px;
+                    font-family: sans-serif;
+                    color: #6E1DED;
+                    line-height: 35px;">Here’s a taste of what AND learners have 
+                    created <br>(and what you can make too!) on  
+                    their way to building <br>industry-ready 
+                    portfolios.   </p>   <br>			
+                    <p style="font-size: 26px;
+                    font-family: sans-serif;
+                    color: #6E1DED;
+                    line-height: 35px;">Delicious, isn’t it?</p>  
+                    
+                    
+              <a href="ux.html"><img style="margin-top: 80px;" src="https://www.andacademy.com/wp-content/themes/andacademy/pm/images/Back-arrow.png" width="15px">
+              </a> 
+                
+           
+        </div>
+        <div class="right-column">
+            <img class="right" src="https://www.andacademy.com/wp-content/themes/andacademy/pm/images/student-work.gif">
+            <!-- <div class="buttons">
+                <a href="studentjourney.html"> <button class="button">SEE STUDENT JOURNEY</button></a>
+                <a href="getbrochure.html"><button class="button">GET BROCHURE</button></a>
+             </div> -->
+             
+               
+           
+            <!-- Button to load a different page -->
+          <div class="buttons">
+            <button style="margin-top: -40px; font-family:sans-serif;
+            background: #ae7bff;
+            color: #fff;
+            font-size: 15px;
+            text-transform: uppercase;
+            padding: 10px 0;
+            text-align: center;
+            line-height: 28px;
+            border: #ae7bff;
+            width: 200px;" id="loadButton">Load Page 1</button>
+          </div>
+        
+    </div>
+</div>
+        
+<script>
+    // Function to load and replace content
+    function loadPage(url) {
+        // Hide the previous content
+        $('#content').hide();
+        // Load new content
+        $.ajax({
+            url: url,
+            method: 'GET',
+            dataType: 'html',
+            success: function(data) {
+                // Replace the content and show it
+                $('#content').html(data).show();
+            },
+            error: function() {
+                alert('Error loading the page.');
+            }
+        });
+    }
+    // Attach a click event handler to the button
+    $('#loadButton').click(function() {
+        loadPage('studentjourney.html'); // Change the URL to the desired page
+    });
+</script>
+</body>
+</html>
+
